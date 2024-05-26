@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381107412178",
+    "project_id": "appifylabtask",
+    "storage_bucket": "appifylabtask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381107412178:android:82fe33966ac28f7dbfe10b",
+        "android_client_info": {
+          "package_name": "com.example.appifylab_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6YA-Z0LV-vfHasW7Ufo3fS5cLldCJUuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
