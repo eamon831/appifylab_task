@@ -1,6 +1,8 @@
+import 'package:appifylab_task/app/core/widget/elevated_container.dart';
 import 'package:appifylab_task/app/core/widget/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import '/app/core/base/base_view.dart';
 
@@ -63,6 +65,15 @@ class LoginView extends BaseView<LoginController> {
                     obscureText: !controller.showPassword.value,
                   );
                 },
+              ),
+              ElevatedContainer(
+                onPressed: () {
+                  toast('Forgot Password?');
+                },
+                bgColor: Colors.transparent,
+                padding: const EdgeInsets.all(8),
+                borderRadius: 0,
+                child: const Text('Forgot Password?'),
               ),
               ElevatedButton(
                 onPressed: controller.login,
