@@ -1,3 +1,6 @@
 {
-  "bottomNavHome": "হোম"
+   "bottomNavChats": "চ্যাট",
+   "bottomNavUpdates": "আপডেট",
+   "bottomNavCommunities": "সম্প্রদায়",
+   "bottomNavCalls": "কল"
 }
