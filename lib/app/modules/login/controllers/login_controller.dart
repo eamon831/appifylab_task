@@ -30,7 +30,7 @@ class LoginController extends BaseController {
     final password = passwordController.text;
 
     try {
-      final userCredential = await _createUserWithEmailAndPassword(
+      final userCredential = await _signInWithEmailAndPassword(
         email,
         password,
       );
@@ -40,24 +40,21 @@ class LoginController extends BaseController {
     }
   }
 
-  Future<UserCredential> _createUserWithEmailAndPassword(
+  Future<UserCredential> _signInWithEmailAndPassword(
     String email,
     String password,
   ) {
-    return FirebaseAuth.instance.createUserWithEmailAndPassword(
+    return FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
   void _logSuccess(UserCredential userCredential) {
+    final uid = userCredential.user?.uid;
     final userEmail = userCredential.user?.email;
-    if (userEmail != null) {
-      logger.i('User created with email: $userEmail');
-      toast('User created with email: $userEmail');
-    } else {
-      logger.w('User created but email is null');
-      toast('User created but email is null');
+    if (uid != null) {
+      toast('Logged in as: $userEmail');
     }
   }
 
