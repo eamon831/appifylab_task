@@ -11,7 +11,8 @@ import '/app/core/values/app_colors.dart';
 import '/app/core/widget/loading.dart';
 import '/flavors/build_config.dart';
 
-abstract class BaseView<Controller extends BaseController> extends GetView<Controller> {
+abstract class BaseView<Controller extends BaseController>
+    extends GetView<Controller> {
   BaseView({super.key});
 
   final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
@@ -81,9 +82,11 @@ abstract class BaseView<Controller extends BaseController> extends GetView<Contr
 
   Widget showErrorSnackBar(String message) {
     final snackBar = SnackBar(content: Text(message));
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
+      },
+    );
 
     return Container();
   }
