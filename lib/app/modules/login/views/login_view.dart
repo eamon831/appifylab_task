@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/core/widget/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,25 +21,55 @@ class LoginView extends BaseView<LoginController> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              controller: controller.emailController,
-              decoration: const InputDecoration(
+        child: Form(
+          key: controller.formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormFieldWidget(
+                controller: controller.emailController,
                 hintText: 'Email',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter email';
+                  }
+                  if (!GetUtils.isEmail(value)) {
+                    return 'Please enter valid email';
+                  }
+                  return null;
+                },
               ),
-            ),
-            TextFormField(
-              controller: controller.passwordController,
-              decoration: const InputDecoration(
-                hintText: 'Password',
+              Obx(
+                () {
+                  return TextFormFieldWidget(
+                    controller: controller.passwordController,
+                    hintText: 'Password',
+                    suffix: IconButton(
+                      icon: Icon(
+                        controller.showPassword.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: controller.showPassword.toggle,
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter password';
+                      }
+                      if (value.length < 6) {
+                        return 'Password must be at least 6 characters';
+                      }
+                      return null;
+                    },
+                    obscureText: !controller.showPassword.value,
+                  );
+                },
               ),
-            ),
-            ElevatedButton(
-              onPressed: controller.login,
-              child: const Text('Login'),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: controller.login,
+                child: const Text('Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );

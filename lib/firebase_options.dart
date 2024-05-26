@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '381107412178',
     projectId: 'appifylabtask',
     storageBucket: 'appifylabtask.appspot.com',
+    androidClientId: '381107412178-pspfrgrd7j8mlufa45ud8imatq3hu49h.apps.googleusercontent.com',
+    iosClientId: '381107412178-061vm5rghhd7oee4vuod2hd97kabvr0d.apps.googleusercontent.com',
     iosBundleId: 'com.example.appifylabTask',
   );
+
 }

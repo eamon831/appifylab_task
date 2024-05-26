@@ -9,7 +9,9 @@ dependencies:
   dio: ^5.4.3+1
   equatable: ^2.0.5
   firebase_auth: ^4.19.6
+  firebase_auth_platform_interface: ^7.2.7
   firebase_core: ^2.31.1
+  firebase_messaging: ^14.9.3
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
