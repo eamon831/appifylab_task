@@ -106,6 +106,7 @@ class RegisterController extends BaseController {
 
   Future<void> pickProfilePic() async {
     final FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
       allowedExtensions: ['jpg', 'jpeg', 'png'],
     );
 
