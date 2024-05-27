@@ -10,6 +10,7 @@ import '/app/core/base/base_controller.dart';
 class RegisterController extends BaseController {
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
+  final phoneController = TextEditingController();
   final emailController = TextEditingController(
     text: 'test@gmail.com',
   );
@@ -53,10 +54,12 @@ class RegisterController extends BaseController {
     final uid = userCredential.user?.uid;
     final userEmail = userCredential.user?.email;
     final name = nameController.text;
+    final phone = phoneController.text;
     if (uid != null && userEmail != null) {
       await addUserToFirestore(
         userCredential.user!,
         name,
+        phone,
       );
       toast('Logged in as: $userEmail');
       Get.offAllNamed(Routes.MAIN);
@@ -73,6 +76,7 @@ class RegisterController extends BaseController {
   Future<void> addUserToFirestore(
     User user,
     String name,
+    String phone,
   ) async {
     final users = FirebaseFirestore.instance.collection('tbl_users');
     await users.doc(user.uid).set(
@@ -80,6 +84,7 @@ class RegisterController extends BaseController {
         'uid': user.uid,
         'email': user.email,
         'name': name,
+        'phone': phone,
         'createdAt': FieldValue.serverTimestamp(),
       },
     );

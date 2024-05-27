@@ -6,6 +6,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final String? Function(String?) validator;
   final bool obscureText;
   final Widget? suffix;
+  final TextInputType keyboardType;
 
   const TextFormFieldWidget({
     required this.controller,
@@ -14,6 +15,7 @@ class TextFormFieldWidget extends StatelessWidget {
     super.key,
     this.obscureText = false,
     this.suffix,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
@@ -27,6 +29,7 @@ class TextFormFieldWidget extends StatelessWidget {
       ),
       validator: validator,
       obscureText: obscureText,
+      keyboardType:keyboardType,
     );
   }
 }

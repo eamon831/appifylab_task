@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../widget/chat_card.dart';
 import '/app/core/base/base_view.dart';
 import '/app/core/values/app_colors.dart';
 import '/app/modules/chats/controllers/chats_controller.dart';
@@ -35,13 +36,11 @@ class ChatsView extends BaseView<ChatsController> {
               final data = document.data()! as Map<String, dynamic>;
               final receiver = ReceiverUser.fromMap(data);
               final uid = data['uid'];
-              //create user object
-
 
               if (uid != currentUID) {
-                return ListTile(
-                  title: Text(data['name']),
-                  subtitle: Text(data['email']),
+                //whatsapp style chat card view
+                return ChatCard(
+                  receiver: receiver,
                   onTap: () => controller.startChat(
                     uid,
                     receiver,

@@ -27,6 +27,32 @@ class RegisterView extends BaseView<RegisterController> {
           child: Column(
             children: <Widget>[
               TextFormFieldWidget(
+                controller: controller.nameController,
+                hintText: 'Name',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Name';
+                  }
+
+                  return null;
+                },
+              ),
+              TextFormFieldWidget(
+                controller: controller.phoneController,
+                hintText: 'Phone Number',
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Phone Number';
+                  }
+                  if (!GetUtils.isPhoneNumber(value)) {
+                    return 'Please enter valid Phone Number';
+                  }
+
+                  return null;
+                },
+              ),
+              TextFormFieldWidget(
                 controller: controller.emailController,
                 hintText: 'Email',
                 validator: (value) {

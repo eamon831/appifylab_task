@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/core/model/page_state.dart';
 import 'package:appifylab_task/app/model/receiver_user.dart';
 import 'package:appifylab_task/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class ChatsController extends BaseController {
   ) async {
     final currentUser = auth.currentUser;
     if (currentUser == null) return;
+
+    updatePageState(PageState.LOADING);
 
     // Check if a chat already exists between the current user and the other user
     final chatQuery = await firestore
@@ -51,6 +54,7 @@ class ChatsController extends BaseController {
       );
       chatId = newChatDoc.id;
     }
+    updatePageState(PageState.DEFAULT);
 
     Get.toNamed(
       Routes.CHAT_WITH_USER,
