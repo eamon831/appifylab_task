@@ -9,6 +9,7 @@ dependencies:
   cloud_firestore: ^4.17.4
   dio: ^5.4.3+1
   equatable: ^2.0.5
+  file_picker: ^8.0.3
   firebase_auth: ^4.19.6
   firebase_auth_platform_interface: ^7.2.7
   firebase_core: ^2.31.1

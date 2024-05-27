@@ -16,7 +16,7 @@ class ReceiverUser {
       uid: map['uid'],
       name: map['name'],
       email: map['email'],
-      photoUrl: map['photoUrl'],
+      photoUrl: map['photo_url'],
     );
   }
 

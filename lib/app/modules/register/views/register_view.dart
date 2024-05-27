@@ -61,6 +61,24 @@ class RegisterView extends BaseView<RegisterController> {
                 },
               ),
               10.height,
+              Obx(
+                () {
+                  return controller.profilePic.value.path.isNotEmpty
+                      ? Image.file(
+                          controller.profilePic.value,
+                          height: 100,
+                          width: 100,
+                        )
+                      : Container();
+                },
+              ),
+              10.height,
+              ElevatedButton(
+                onPressed: controller.pickProfilePic,
+                child: const Text(
+                  'Pick Profile Pic',
+                ),
+              ),
               ElevatedButton(
                 onPressed: controller.register,
                 child: const Text('Register'),
