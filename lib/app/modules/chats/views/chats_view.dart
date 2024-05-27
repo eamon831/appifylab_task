@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,14 @@ class ChatsView extends BaseView<ChatsController> {
                   title: Text(data['name']),
                   subtitle: Text(data['email']),
                   onTap: () {
-
+                    Get.toNamed(
+                      Routes.CHAT_WITH_USER,
+                      arguments: {
+                        'uid': uid,
+                        'name': data['name'],
+                        'data': data,
+                      },
+                    );
                   },
                 );
               } else {

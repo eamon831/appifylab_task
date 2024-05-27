@@ -8,9 +8,11 @@ class ChatsBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ChatsController>(
       () => ChatsController(),
+      fenix: true,
     );
     Get.lazyPut<AddChatModalController>(
       () => AddChatModalController(),
+      fenix: true,
     );
   }
 }
