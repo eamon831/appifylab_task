@@ -10,7 +10,7 @@ class MainController extends BaseController {
 
   final lifeCardUpdateController = false.obs;
 
-  onMenuSelected(MenuCode menuCode) async {
+  Future<void> onMenuSelected(MenuCode menuCode) async {
     _selectedMenuCodeController(menuCode);
   }
 }

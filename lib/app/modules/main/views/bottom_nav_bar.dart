@@ -25,7 +25,7 @@ class BottomNavBar extends StatelessWidget with BaseWidgetMixin {
 
   @override
   Widget body(BuildContext context) {
-    List<BottomNavItem> navItems = _getNavItems();
+    final List<BottomNavItem> navItems = _getNavItems();
 
     return Obx(
       () => BottomNavigationBar(

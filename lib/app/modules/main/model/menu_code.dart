@@ -12,25 +12,25 @@ extension MenuCodeExtensions on MenuCode {
       case MenuCode.chats:
         return BottomNavItem(
           navTitle: appLocalization.bottomNavChats,
-          iconSvgName: 'ic_home.svg',
+          iconSvgName: 'ic_chats.svg',
           menuCode: MenuCode.chats,
         );
       case MenuCode.updates:
         return BottomNavItem(
           navTitle: appLocalization.bottomNavUpdates,
-          iconSvgName: 'ic_favorite.svg',
+          iconSvgName: 'ic_updates.svg',
           menuCode: MenuCode.updates,
         );
       case MenuCode.communities:
         return BottomNavItem(
           navTitle: appLocalization.bottomNavCommunities,
-          iconSvgName: 'ic_settings.svg',
+          iconSvgName: 'ic_communities.svg',
           menuCode: MenuCode.communities,
         );
       case MenuCode.calls:
         return BottomNavItem(
           navTitle: appLocalization.bottomNavCalls,
-          iconSvgName: 'ic_settings.svg',
+          iconSvgName: 'ic_calls.svg',
           menuCode: MenuCode.calls,
         );
     }
