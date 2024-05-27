@@ -36,16 +36,6 @@ class AddChatModalView extends BaseView<AddChatModalController> {
               return null;
             },
           ),
-          TextFormFieldWidget(
-            controller: controller.phoneNumberController,
-            hintText: 'Phone Number',
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter phone number';
-              }
-              return null;
-            },
-          ),
           5.height,
           ElevatedButton(
             onPressed: controller.addChat,

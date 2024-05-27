@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
-import '../modules/chats/bindings/chats_binding.dart';
-import '../modules/chats/views/chats_view.dart';
+import '/app/modules/chats/bindings/chats_binding.dart';
+import '/app/modules/chats/views/chats_view.dart';
 import '/app/modules/login/bindings/login_binding.dart';
 import '/app/modules/login/views/login_view.dart';
 import '/app/modules/main/bindings/main_binding.dart';
 import '/app/modules/main/views/main_view.dart';
+import '/app/modules/register/bindings/register_binding.dart';
+import '/app/modules/register/views/register_view.dart';
 
 part 'app_routes.dart';
 
@@ -29,5 +31,10 @@ class AppPages {
       page: () => ChatsView(),
       binding: ChatsBinding(),
     ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => RegisterView(),
+      binding: RegisterBinding(),
+    )
   ];
 }

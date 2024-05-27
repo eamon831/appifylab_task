@@ -1,13 +1,15 @@
 import 'package:appifylab_task/app/core/model/page_state.dart';
 import 'package:appifylab_task/app/routes/app_pages.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 import '/app/core/base/base_controller.dart';
 
-class LoginController extends BaseController {
+class RegisterController extends BaseController {
   final formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
   final emailController = TextEditingController(
     text: 'test@gmail.com',
   );
@@ -16,7 +18,7 @@ class LoginController extends BaseController {
   );
   final showPassword = false.obs;
 
-  Future<void> login() async {
+  Future<void> register() async {
     if (!formKey.currentState!.validate()) return;
 
     updatePageState(PageState.LOADING);
@@ -25,11 +27,11 @@ class LoginController extends BaseController {
     final password = passwordController.text;
 
     try {
-      final userCredential = await _signInWithEmailAndPassword(
+      final userCredential = await _registerWithEmailAndPassword(
         email,
         password,
       );
-      _logSuccess(userCredential);
+      await _logSuccess(userCredential);
     } on FirebaseAuthException catch (e) {
       _handleFirebaseAuthException(e);
     } finally {
@@ -37,20 +39,25 @@ class LoginController extends BaseController {
     }
   }
 
-  Future<UserCredential> _signInWithEmailAndPassword(
+  Future<UserCredential> _registerWithEmailAndPassword(
     String email,
     String password,
   ) {
-    return FirebaseAuth.instance.signInWithEmailAndPassword(
+    return FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
-  void _logSuccess(UserCredential userCredential) {
+  Future<void> _logSuccess(UserCredential userCredential) async {
     final uid = userCredential.user?.uid;
     final userEmail = userCredential.user?.email;
+    final name = nameController.text;
     if (uid != null && userEmail != null) {
+      await addUserToFirestore(
+        userCredential.user!,
+        name,
+      );
       toast('Logged in as: $userEmail');
       Get.offAllNamed(Routes.MAIN);
     } else {
@@ -63,7 +70,18 @@ class LoginController extends BaseController {
     toast(e.message ?? 'An error occurred. Please try again.');
   }
 
-  void register() {
-    Get.toNamed(Routes.REGISTER);
+  Future<void> addUserToFirestore(
+    User user,
+    String name,
+  ) async {
+    final users = FirebaseFirestore.instance.collection('tbl_users');
+    await users.doc(user.uid).set(
+      {
+        'uid': user.uid,
+        'email': user.email,
+        'name': name,
+        'createdAt': FieldValue.serverTimestamp(),
+      },
+    );
   }
 }
