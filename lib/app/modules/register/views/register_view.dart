@@ -29,41 +29,18 @@ class RegisterView extends BaseView<RegisterController> {
               TextFormFieldWidget(
                 controller: controller.nameController,
                 hintText: 'Name',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter Name';
-                  }
-
-                  return null;
-                },
+                validator: requiredValidator,
               ),
               TextFormFieldWidget(
                 controller: controller.phoneController,
                 hintText: 'Phone Number',
                 keyboardType: TextInputType.phone,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter Phone Number';
-                  }
-                  if (!GetUtils.isPhoneNumber(value)) {
-                    return 'Please enter valid Phone Number';
-                  }
-
-                  return null;
-                },
+                validator: phoneValidator,
               ),
               TextFormFieldWidget(
                 controller: controller.emailController,
                 hintText: 'Email',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  if (!GetUtils.isEmail(value)) {
-                    return 'Please enter valid email';
-                  }
-                  return null;
-                },
+                validator: emailValidator,
               ),
               Obx(
                 () {
@@ -78,15 +55,7 @@ class RegisterView extends BaseView<RegisterController> {
                       ),
                       onPressed: controller.showPassword.toggle,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
+                    validator: passwordValidator,
                     obscureText: !controller.showPassword.value,
                   );
                 },

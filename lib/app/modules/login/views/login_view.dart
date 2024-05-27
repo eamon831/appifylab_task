@@ -28,15 +28,7 @@ class LoginView extends BaseView<LoginController> {
               TextFormFieldWidget(
                 controller: controller.emailController,
                 hintText: 'Email',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  if (!GetUtils.isEmail(value)) {
-                    return 'Please enter valid email';
-                  }
-                  return null;
-                },
+                validator: emailValidator,
               ),
               Obx(
                 () {
@@ -51,15 +43,7 @@ class LoginView extends BaseView<LoginController> {
                       ),
                       onPressed: controller.showPassword.toggle,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
+                    validator: passwordValidator,
                     obscureText: !controller.showPassword.value,
                   );
                 },

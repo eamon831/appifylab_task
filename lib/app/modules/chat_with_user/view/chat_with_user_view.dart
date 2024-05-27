@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/preferred_size.dart';
 
 import '/app/core/base/base_view.dart';
 import '/app/modules/chat_with_user/controllers/chat_with_user_controller.dart';
