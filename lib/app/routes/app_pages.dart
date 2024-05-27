@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/chats/bindings/chats_binding.dart';
+import '../modules/chats/views/chats_view.dart';
 import '/app/modules/login/bindings/login_binding.dart';
 import '/app/modules/login/views/login_view.dart';
 import '/app/modules/main/bindings/main_binding.dart';
@@ -21,6 +23,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHATS,
+      page: () => ChatsView(),
+      binding: ChatsBinding(),
     ),
   ];
 }
