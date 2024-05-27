@@ -10,10 +10,11 @@ import '/app/core/model/page_state.dart';
 import '/app/core/values/app_colors.dart';
 import '/app/core/widget/loading.dart';
 import '/flavors/build_config.dart';
+import 'mixins/shorter_enum_mixin.dart';
 import 'mixins/validator_mixin.dart';
 
 abstract class BaseView<Controller extends BaseController>
-    extends GetView<Controller> with ValidatorMixin {
+    extends GetView<Controller> with ValidatorMixin,ShorterEnumMixin {
   BaseView({super.key});
 
   final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
