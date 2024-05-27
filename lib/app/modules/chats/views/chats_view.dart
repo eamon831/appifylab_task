@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/model/receiver_user.dart';
 import 'package:appifylab_task/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,21 +33,19 @@ class ChatsView extends BaseView<ChatsController> {
             itemBuilder: (context, index) {
               final DocumentSnapshot document = snapshot.data!.docs[index];
               final data = document.data()! as Map<String, dynamic>;
+              final receiver = ReceiverUser.fromMap(data);
               final uid = data['uid'];
+              //create user object
+
+
               if (uid != currentUID) {
                 return ListTile(
                   title: Text(data['name']),
                   subtitle: Text(data['email']),
-                  onTap: () {
-                    Get.toNamed(
-                      Routes.CHAT_WITH_USER,
-                      arguments: {
-                        'uid': uid,
-                        'name': data['name'],
-                        'data': data,
-                      },
-                    );
-                  },
+                  onTap: () => controller.startChat(
+                    uid,
+                    receiver,
+                  ),
                 );
               } else {
                 return const SizedBox();
@@ -58,16 +57,6 @@ class ChatsView extends BaseView<ChatsController> {
             child: CircularProgressIndicator(),
           );
         }
-      },
-    );
-
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('Chat $index'),
-          subtitle: Text('Chat Subtitle $index'),
-        );
       },
     );
   }

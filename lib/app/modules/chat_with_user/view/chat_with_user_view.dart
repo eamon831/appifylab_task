@@ -17,6 +17,10 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
   Widget body(BuildContext context) {
     return Column(
       children: [
+        ElevatedButton(
+          onPressed: controller.sendMessage,
+          child: const Text('Send Message'),
+        ),
         const Text('Chat with user'),
       ],
     );
