@@ -22,6 +22,11 @@ class ChatsController extends BaseController {
     final currentUser = auth.currentUser;
     if (currentUser == null) return;
 
+    if(!(await authenticate())){
+      return;
+    }
+
+
     updatePageState(PageState.LOADING);
 
     // Check if a chat already exists between the current user and the other user

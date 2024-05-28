@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:logger/logger.dart';
 
 import '/app/core/model/page_state.dart';
@@ -20,6 +21,7 @@ import 'mixins/table_mixin.dart';
 abstract class BaseController extends GetxController with TableMixin {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final LocalAuthentication localAuth = LocalAuthentication();
 
   final Logger logger = BuildConfig.instance.config.logger;
 
@@ -124,5 +126,30 @@ abstract class BaseController extends GetxController with TableMixin {
     _refreshController.close();
     _pageSateController.close();
     super.onClose();
+  }
+
+  Future<bool> authenticate() async {
+    final bool canCheckBiometrics = await localAuth.canCheckBiometrics;
+    bool isAuthenticated = false;
+
+    if (canCheckBiometrics) {
+      isAuthenticated = await localAuth.authenticate(
+        localizedReason: 'Please authenticate to access your chats',
+        options: const AuthenticationOptions(
+          useErrorDialogs: true,
+          stickyAuth: true,
+        ),
+      );
+    } else {
+      isAuthenticated = await localAuth.authenticate(
+        localizedReason: 'Please authenticate to access your chats',
+        options: const AuthenticationOptions(
+          useErrorDialogs: true,
+          stickyAuth: true,
+        ),
+      );
+    }
+
+    return isAuthenticated;
   }
 }
