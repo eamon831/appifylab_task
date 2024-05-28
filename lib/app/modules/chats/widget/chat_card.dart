@@ -12,6 +12,66 @@ class ChatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(receiver.photoUrl ?? ''),
+              radius: 25.0,
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          receiver.name ?? '',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      const Text('12:00'),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(child: Text(receiver.email ?? '')),
+                      if (true)
+                        const Icon(
+                          Icons.check_circle,
+                          size: 16.0,
+                          color: Colors.green,
+                        ),
+                      if (false)
+                        const Icon(
+                          Icons.check_circle_outline,
+                          color: Colors.grey,
+                          size: 16.0,
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
     return GestureDetector(
       onTap: onTap,
       child: Container(

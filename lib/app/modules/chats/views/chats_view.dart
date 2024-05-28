@@ -1,27 +1,49 @@
 import 'package:appifylab_task/app/model/receiver_user.dart';
-import 'package:appifylab_task/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../widget/chat_card.dart';
 import '/app/core/base/base_view.dart';
 import '/app/core/values/app_colors.dart';
 import '/app/modules/chats/controllers/chats_controller.dart';
+import '../widget/chat_card.dart';
 
 class ChatsView extends BaseView<ChatsController> {
   ChatsView({super.key});
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return AppBar();
+    return AppBar(
+      elevation: 0.0,
+      title: const Text('WhatsApp'),
+      backgroundColor: const Color(0xFF128C7E),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.search),
+        ),
+        PopupMenuButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          itemBuilder: (context) {
+            return [
+              // In this case, we need 5 popupmenuItems one for each option.
+              const PopupMenuItem(child: Text('New Group')),
+              const PopupMenuItem(child: Text('New Broadcast')),
+              const PopupMenuItem(child: Text('Linked Devices')),
+              const PopupMenuItem(child: Text('Starred Messages')),
+              const PopupMenuItem(child: Text('Settings')),
+            ];
+          },
+        ),
+      ],
+    );
   }
 
   @override
   Widget body(BuildContext context) {
     final currentUID = FirebaseAuth.instance.currentUser?.uid;
-    print('currentUID: $currentUID');
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('tbl_users').snapshots(),
       builder: (
@@ -29,27 +51,33 @@ class ChatsView extends BaseView<ChatsController> {
         snapshot,
       ) {
         if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data?.docs.length ?? 0,
-            itemBuilder: (context, index) {
-              final DocumentSnapshot document = snapshot.data!.docs[index];
-              final data = document.data()! as Map<String, dynamic>;
-              final receiver = ReceiverUser.fromMap(data);
-              final uid = data['uid'];
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 8,
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: snapshot.data?.docs.length ?? 0,
+              itemBuilder: (context, index) {
+                final DocumentSnapshot document = snapshot.data!.docs[index];
+                final data = document.data()! as Map<String, dynamic>;
+                final receiver = ReceiverUser.fromMap(data);
+                final uid = data['uid'];
 
-              if (uid != currentUID) {
-                //whatsapp style chat card view
-                return ChatCard(
-                  receiver: receiver,
-                  onTap: () => controller.startChat(
-                    uid,
-                    receiver,
-                  ),
-                );
-              } else {
-                return const SizedBox();
-              }
-            },
+                if (uid != currentUID) {
+                  return ChatCard(
+                    receiver: receiver,
+                    onTap: () => controller.startChat(
+                      uid,
+                      receiver,
+                    ),
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
           );
         } else {
           return const Center(

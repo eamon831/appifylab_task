@@ -87,7 +87,7 @@ class ChatWithUserController extends BaseController {
           // Update the message with the file URL and correct type
           await msgRef.update(
             {
-              'imageUrl': fileUrl, // Consider renaming to fileUrl or similar
+              'imageUrl': fileUrl,
               'type': fileType,
             },
           );
