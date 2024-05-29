@@ -12,15 +12,25 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      automaticallyImplyLeading: true,
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(controller.receiverUser.name ?? ''),
-          Text(
-            controller.receiverUser.phone ?? '',
-            style: const TextStyle(
-              fontSize: 14,
-            ),
+          CircleAvatar(
+            backgroundImage: NetworkImage(controller.receiverUser.photoUrl ?? ''),
+          ),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(controller.receiverUser.name ?? ''),
+              Text(
+                controller.receiverUser.phone ?? '',
+                style: const TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+            ],
           ),
         ],
       ),

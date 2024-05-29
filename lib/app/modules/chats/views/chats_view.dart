@@ -53,6 +53,10 @@ class ChatsView extends BaseView<ChatsController> {
                 onTap: controller.goToSettings,
                 child: const Text('Settings'),
               ),
+              PopupMenuItem(
+                onTap: controller.logOut,
+                child: const Text('Log Out'),
+              ),
             ];
           },
         ),

@@ -96,4 +96,11 @@ class ChatsController extends BaseController {
           'user': myUserObj,
         },
       );
+
+  void logOut() {
+    auth.signOut();
+    Get.offAllNamed(
+      Routes.SPLASH,
+    );
+  }
 }
