@@ -7,6 +7,7 @@ import '/app/modules/chats/views/chats_view.dart';
 import '/app/modules/main/controllers/main_controller.dart';
 import '/app/modules/main/model/menu_code.dart';
 import '/app/modules/main/views/bottom_nav_bar.dart';
+import '/app/modules/updates/views/update_view.dart';
 
 // ignore: must_be_immutable
 class MainView extends BaseView<MainController> {
@@ -31,7 +32,7 @@ class MainView extends BaseView<MainController> {
   }
 
   final ChatsView chatView = ChatsView();
-  UpdatesView? favoriteView;
+  UpdateView? updateView;
   CommunitiesView? settingsView;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
@@ -39,8 +40,8 @@ class MainView extends BaseView<MainController> {
       case MenuCode.chats:
         return chatView;
       case MenuCode.updates:
-        favoriteView ??= const UpdatesView();
-        return favoriteView!;
+        updateView??= UpdateView();
+        return updateView!;
       case MenuCode.communities:
         settingsView ??= const CommunitiesView();
         return settingsView!;
@@ -52,16 +53,6 @@ class MainView extends BaseView<MainController> {
   }
 }
 
-class UpdatesView extends StatelessWidget {
-  const UpdatesView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Favorite View'),
-    );
-  }
-}
 
 class CommunitiesView extends StatelessWidget {
   const CommunitiesView({super.key});

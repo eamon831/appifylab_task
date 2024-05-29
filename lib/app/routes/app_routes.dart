@@ -12,6 +12,7 @@ abstract class Routes {
   static const CHAT_WITH_USER = _Paths.CHAT_WITH_USER;
   static const CAMERA = _Paths.CAMERA;
   static const SETTINGS = _Paths.SETTINGS;
+  static const UPDATES = _Paths.UPDATES;
 }
 
 abstract class _Paths {
@@ -24,4 +25,5 @@ abstract class _Paths {
   static const CHAT_WITH_USER = '/chat-with-user';
   static const CAMERA = '/camera';
   static const SETTINGS = '/settings';
+  static const UPDATES = '/updates';
 }

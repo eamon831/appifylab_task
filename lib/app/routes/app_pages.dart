@@ -16,6 +16,8 @@ import '/app/modules/settings/bindings/settings_binding.dart';
 import '/app/modules/settings/views/settings_views.dart';
 import '/app/modules/splash/bindings/splash_binding.dart';
 import '/app/modules/splash/views/splash_view.dart';
+import '/app/modules/updates/bindings/update_binding.dart';
+import '/app/modules/updates/views/update_view.dart';
 
 part 'app_routes.dart';
 
@@ -63,6 +65,11 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => SettingsViews(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATES,
+      page: () => UpdateView(),
+      binding: UpdateBinding(),
     ),
   ];
 }
