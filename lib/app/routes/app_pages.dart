@@ -1,5 +1,7 @@
+import 'package:appifylab_task/app/modules/camera/views/camera_view.dart';
 import 'package:get/get.dart';
 
+import '/app/modules/camera/bindings/camera_binding.dart';
 import '/app/modules/chat_with_user/bindings/chat_with_user_binding.dart';
 import '/app/modules/chat_with_user/view/chat_with_user_view.dart';
 import '/app/modules/chats/bindings/chats_binding.dart';
@@ -42,6 +44,11 @@ class AppPages {
       name: _Paths.CHAT_WITH_USER,
       page: () => ChatWithUserView(),
       binding: ChatWithUserBinding(),
-    )
+    ),
+    GetPage(
+      name: _Paths.CAMERA,
+      page: () => CameraView(),
+      binding: CameraBinding(),
+    ),
   ];
 }

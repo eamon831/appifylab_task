@@ -9,6 +9,7 @@ abstract class Routes {
   static const CHATS = _Paths.CHATS;
   static const REGISTER = _Paths.REGISTER;
   static const CHAT_WITH_USER = _Paths.CHAT_WITH_USER;
+  static const CAMERA = _Paths.CAMERA;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const CHATS = '/chats';
   static const REGISTER = '/register';
   static const CHAT_WITH_USER = '/chat-with-user';
+  static const CAMERA = '/camera';
 }

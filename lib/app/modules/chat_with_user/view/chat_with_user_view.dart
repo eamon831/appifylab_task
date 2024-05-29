@@ -62,7 +62,7 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
             children: [
               Expanded(
                 child: TextField(
-                  controller: controller.controller,
+                  controller: controller.msgController,
                   decoration: const InputDecoration(
                     labelText: 'Send a message...',
                   ),
@@ -75,6 +75,10 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
               IconButton(
                 icon: const Icon(Icons.add),
                 onPressed: controller.addFile,
+              ),
+              IconButton(
+                icon: const Icon(Icons.video_camera_front),
+                onPressed: controller.openCamera,
               ),
             ],
           ),
