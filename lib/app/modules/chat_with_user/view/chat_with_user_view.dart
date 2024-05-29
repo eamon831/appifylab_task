@@ -85,9 +85,10 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
         Obx(
           () {
             final fileType = controller.selectedFile.value.path.split('.').last;
-            print(fileType);
+
+
             return controller.selectedFile.value.path.isNotEmpty
-                ? fileType == ''
+                ? fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png'
                     ? Image.file(
                         controller.selectedFile.value,
                         height: 100,
