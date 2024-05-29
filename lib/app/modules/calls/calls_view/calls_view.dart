@@ -1,5 +1,3 @@
-
-
 import 'package:appifylab_task/app/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +9,28 @@ class CallsView extends BaseView<CallsController> {
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.appBarColor,
-      title: Text('Calls'),
-
+      title: const Text('Calls'),
     );
   }
 
   @override
   Widget body(BuildContext context) {
-    return Center(
-      child: Text('Calls'),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              onPressed: () => controller.scanBarcode(context),
+              child: const Text('Scan Barcode'),
+            ),
+            ElevatedButton(
+              onPressed: () => controller.scanBluetooth(context),
+              child: const Text('Scan Bluetooth'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
