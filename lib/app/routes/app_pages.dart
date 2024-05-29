@@ -6,6 +6,8 @@ import '/app/modules/chat_with_user/bindings/chat_with_user_binding.dart';
 import '/app/modules/chat_with_user/view/chat_with_user_view.dart';
 import '/app/modules/chats/bindings/chats_binding.dart';
 import '/app/modules/chats/views/chats_view.dart';
+import '/app/modules/communities/communities_bindings/communities_binding.dart';
+import '/app/modules/communities/communities_view/communities_view.dart';
 import '/app/modules/login/bindings/login_binding.dart';
 import '/app/modules/login/views/login_view.dart';
 import '/app/modules/main/bindings/main_binding.dart';
@@ -70,6 +72,11 @@ class AppPages {
       name: _Paths.UPDATES,
       page: () => UpdateView(),
       binding: UpdateBinding(),
+    ),
+    GetPage(
+      name: _Paths.COMMUNITIES,
+      page: () => CommunitiesView(),
+      binding: CommunitiesBinding(),
     ),
   ];
 }

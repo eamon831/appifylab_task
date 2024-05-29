@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '/app/core/base/base_view.dart';
 import '/app/modules/chats/views/chats_view.dart';
+import '/app/modules/communities/communities_view/communities_view.dart';
 import '/app/modules/main/controllers/main_controller.dart';
 import '/app/modules/main/model/menu_code.dart';
 import '/app/modules/main/views/bottom_nav_bar.dart';
@@ -33,35 +34,23 @@ class MainView extends BaseView<MainController> {
 
   final ChatsView chatView = ChatsView();
   UpdateView? updateView;
-  CommunitiesView? settingsView;
+  CommunitiesView? communitiesView;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.chats:
         return chatView;
       case MenuCode.updates:
-        updateView??= UpdateView();
+        updateView ??= UpdateView();
         return updateView!;
       case MenuCode.communities:
-        settingsView ??= const CommunitiesView();
-        return settingsView!;
+        communitiesView ??= CommunitiesView();
+        return communitiesView!;
       default:
         return OtherView(
           viewParam: describeEnum(menuCode),
         );
     }
-  }
-}
-
-
-class CommunitiesView extends StatelessWidget {
-  const CommunitiesView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Settings View'),
-    );
   }
 }
 
