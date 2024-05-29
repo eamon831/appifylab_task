@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '/app/modules/calls/calls_bindings/calls_binding.dart';
+import '/app/modules/calls/calls_view/calls_view.dart';
 import '/app/modules/camera/bindings/camera_binding.dart';
 import '/app/modules/camera/views/camera_view.dart';
 import '/app/modules/chat_with_user/bindings/chat_with_user_binding.dart';
@@ -77,6 +79,11 @@ class AppPages {
       name: _Paths.COMMUNITIES,
       page: () => CommunitiesView(),
       binding: CommunitiesBinding(),
+    ),
+    GetPage(
+      name: _Paths.CALLS,
+      page: () => CallsView(),
+      binding: CallsBinding(),
     ),
   ];
 }

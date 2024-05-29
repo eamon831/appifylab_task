@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/modules/calls/calls_view/calls_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,6 +36,7 @@ class MainView extends BaseView<MainController> {
   final ChatsView chatView = ChatsView();
   UpdateView? updateView;
   CommunitiesView? communitiesView;
+  CallsView? callsView;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
@@ -46,6 +48,9 @@ class MainView extends BaseView<MainController> {
       case MenuCode.communities:
         communitiesView ??= CommunitiesView();
         return communitiesView!;
+      case MenuCode.calls:
+        callsView ??= CallsView();
+        return callsView!;
       default:
         return OtherView(
           viewParam: describeEnum(menuCode),

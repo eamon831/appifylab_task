@@ -1,3 +1,4 @@
+import 'package:appifylab_task/app/modules/calls/calls_controllers/calls_controller.dart';
 import 'package:get/get.dart';
 
 import '/app/modules/chats/controllers/chats_controller.dart';
@@ -23,6 +24,10 @@ class MainBinding extends Bindings {
       )
       ..lazyPut<CommunitiesController>(
         () => CommunitiesController(),
+        fenix: true,
+      )
+      ..lazyPut<CallsController>(
+        () => CallsController(),
         fenix: true,
       );
   }

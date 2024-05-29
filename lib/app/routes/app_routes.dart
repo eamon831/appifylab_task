@@ -14,6 +14,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const UPDATES = _Paths.UPDATES;
   static const COMMUNITIES = _Paths.COMMUNITIES;
+  static const CALLS = _Paths.CALLS;
 }
 
 abstract class _Paths {
@@ -28,4 +29,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const UPDATES = '/updates';
   static const COMMUNITIES = '/communities';
+  static const CALLS = '/calls';
 }
