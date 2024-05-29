@@ -41,7 +41,7 @@ class RegisterController extends BaseController {
         email,
         password,
       );
-      await _logSuccess(userCredential);
+      await logSuccess(userCredential);
     } on FirebaseAuthException catch (e) {
       _handleFirebaseAuthException(e);
     } finally {
@@ -59,7 +59,7 @@ class RegisterController extends BaseController {
     );
   }
 
-  Future<void> _logSuccess(UserCredential userCredential) async {
+  Future<void> logSuccess(UserCredential userCredential) async {
     final uid = userCredential.user?.uid;
     final userEmail = userCredential.user?.email;
     final name = nameController.text;

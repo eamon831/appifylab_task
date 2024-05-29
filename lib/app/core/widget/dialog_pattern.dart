@@ -20,15 +20,17 @@ class DialogPattern extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       insetPadding: const EdgeInsets.only(
-        left: 2,
-        right: 2,
+        left: 20,
+        right: 20,
+        top: 20,
+        bottom: 20,
       ),
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
       elevation: 0,
       child: SizedBox(
-        width: 300,
-        height: 300,
+        width: double.infinity,
+        //height: 300,
         child: child,
       ),
     );
