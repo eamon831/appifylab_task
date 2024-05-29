@@ -14,7 +14,7 @@ then run the project by "flutter run" in the terminal
 The project follows a modular structure, and key components are organized as follows:
 
 .
-├── app
+├── app\n
 │   ├── bindings
 │   │   └── initial_binding.dart
 │   ├── core
