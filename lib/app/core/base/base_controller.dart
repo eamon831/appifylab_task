@@ -136,18 +136,11 @@ abstract class BaseController extends GetxController with TableMixin {
       isAuthenticated = await localAuth.authenticate(
         localizedReason: 'Please authenticate to access your chats',
         options: const AuthenticationOptions(
-          useErrorDialogs: true,
           stickyAuth: true,
         ),
       );
     } else {
-      isAuthenticated = await localAuth.authenticate(
-        localizedReason: 'Please authenticate to access your chats',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: true,
-        ),
-      );
+      isAuthenticated = true;
     }
 
     return isAuthenticated;
