@@ -12,6 +12,8 @@ then run the project by "flutter run" in the terminal
 ## Project Structure
 
 The project follows a modular structure, and key components are organized as follows:
+
+
 .
 ├── app
 │ ├── bindings
@@ -182,3 +184,5 @@ The project follows a modular structure, and key components are organized as fol
 │ └── app_en.arb
 ├── main_dev.dart
 └── main_prod.dart
+
+
