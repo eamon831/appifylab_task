@@ -14,7 +14,7 @@ class ChatsView extends BaseView<ChatsController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
-      elevation: 0.0,
+      elevation: 0,
       title: const Text('WhatsApp'),
       backgroundColor: const Color(0xFF128C7E),
       actions: [
@@ -29,11 +29,30 @@ class ChatsView extends BaseView<ChatsController> {
           itemBuilder: (context) {
             return [
               // In this case, we need 5 popupmenuItems one for each option.
-              const PopupMenuItem(child: Text('New Group')),
-              const PopupMenuItem(child: Text('New Broadcast')),
-              const PopupMenuItem(child: Text('Linked Devices')),
-              const PopupMenuItem(child: Text('Starred Messages')),
-              const PopupMenuItem(child: Text('Settings')),
+              const PopupMenuItem(
+                child: Text(
+                  'New Group',
+                ),
+              ),
+              const PopupMenuItem(
+                child: Text(
+                  'New Broadcast',
+                ),
+              ),
+              const PopupMenuItem(
+                child: Text(
+                  'Linked Devices',
+                ),
+              ),
+              const PopupMenuItem(
+                child: Text(
+                  'Starred Messages',
+                ),
+              ),
+              PopupMenuItem(
+                onTap: controller.goToSettings,
+                child: const Text('Settings'),
+              ),
             ];
           },
         ),

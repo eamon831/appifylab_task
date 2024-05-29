@@ -48,7 +48,8 @@ class ChatWithUserController extends BaseController {
   }
 
   Future<void> sendMessage() async {
-    if (msgController.text.isEmpty || selectedFile.value.path.isEmptyOrNull) {
+    if (msgController.text.isEmpty && selectedFile.value.path.isEmptyOrNull) {
+      toast('Nothing to send');
       return;
     }
 
@@ -102,7 +103,7 @@ class ChatWithUserController extends BaseController {
           // Update the message with the file URL and correct type
           await msgRef.update(
             {
-              'imageUrl': fileUrl,
+              'file_url': fileUrl,
               'type': fileType,
             },
           );

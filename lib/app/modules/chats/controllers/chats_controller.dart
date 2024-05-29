@@ -22,10 +22,9 @@ class ChatsController extends BaseController {
     final currentUser = auth.currentUser;
     if (currentUser == null) return;
 
-  /*  if(!(await authenticate())){
+    /*  if(!(await authenticate())){
       return;
     }*/
-
 
     updatePageState(PageState.LOADING);
 
@@ -89,4 +88,6 @@ class ChatsController extends BaseController {
       },
     );
   }
+
+  Future? goToSettings() => Get.toNamed(Routes.SETTINGS);
 }

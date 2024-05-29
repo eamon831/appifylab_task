@@ -12,6 +12,8 @@ import '/app/modules/main/bindings/main_binding.dart';
 import '/app/modules/main/views/main_view.dart';
 import '/app/modules/register/bindings/register_binding.dart';
 import '/app/modules/register/views/register_view.dart';
+import '/app/modules/settings/bindings/settings_binding.dart';
+import '/app/modules/settings/views/settings_views.dart';
 import '/app/modules/splash/bindings/splash_binding.dart';
 import '/app/modules/splash/views/splash_view.dart';
 
@@ -56,6 +58,11 @@ class AppPages {
       name: _Paths.CAMERA,
       page: () => CameraView(),
       binding: CameraBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsViews(),
+      binding: SettingsBinding(),
     ),
   ];
 }

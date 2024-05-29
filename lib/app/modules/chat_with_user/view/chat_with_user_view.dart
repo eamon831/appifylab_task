@@ -158,7 +158,7 @@ class MessageBubble extends StatelessWidget {
           child: Column(
             children: [
               if (message.type == 'image')
-                Image.network(message.imageUrl ?? ''),
+                Image.network(message.fileUrl ?? ''),
               Text(
                 message.text,
                 style: TextStyle(
