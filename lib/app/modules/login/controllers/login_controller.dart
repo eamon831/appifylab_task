@@ -8,12 +8,8 @@ import '/app/core/base/base_controller.dart';
 
 class LoginController extends BaseController {
   final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController(
-    text: 'test@gmail.com',
-  );
-  final passwordController = TextEditingController(
-    text: '123456',
-  );
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final showPassword = false.obs;
 
   Future<void> login() async {

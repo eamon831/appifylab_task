@@ -15,12 +15,8 @@ class RegisterController extends BaseController {
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
-  final emailController = TextEditingController(
-    text: 'test@gmail.com',
-  );
-  final passwordController = TextEditingController(
-    text: '123456',
-  );
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final profilePic = File('').obs;
   final showPassword = false.obs;
 
