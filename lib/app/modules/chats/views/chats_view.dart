@@ -16,7 +16,7 @@ class ChatsView extends BaseView<ChatsController> {
     return AppBar(
       elevation: 0,
       title: const Text('WhatsApp'),
-      backgroundColor: const Color(0xFF128C7E),
+      backgroundColor: AppColors.appBarColor,
       actions: [
         IconButton(
           onPressed: () {},

@@ -1,5 +1,6 @@
 
 
+import 'package:appifylab_task/app/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '/app/core/base/base_view.dart';
@@ -9,7 +10,9 @@ class CallsView extends BaseView<CallsController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.appBarColor,
       title: Text('Calls'),
+
     );
   }
 
