@@ -1,7 +1,6 @@
 import 'package:camera/camera.dart' as camera_pkg;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '/app/core/base/base_view.dart';
 import '/app/modules/camera/controllers/camera_controller.dart';
 
@@ -32,6 +31,14 @@ class CameraView extends BaseView<CameraController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  ElevatedButton(
+                    onPressed: controller.isRecording
+                        ? controller.stopVideoRecording
+                        : controller.startVideoRecording,
+                    child: Icon(
+                      controller.isRecording ? Icons.stop : Icons.videocam,
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed: controller.takePicture,
                     child: const Icon(

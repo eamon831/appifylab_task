@@ -1,15 +1,14 @@
 import 'dart:io';
-
 import 'package:camera/camera.dart' as camera_pkg;
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
-
 import '/app/core/base/base_controller.dart';
 
 class CameraController extends BaseController {
   final camController = Rx<camera_pkg.CameraController?>(null);
   List<camera_pkg.CameraDescription>? cameras;
   int selectedCameraIndex = 0;
+  bool isRecording = false;
 
   @override
   Future<void> onInit() async {
@@ -43,8 +42,6 @@ class CameraController extends BaseController {
       await image.saveTo(imagePath);
       final imageFile = File(imagePath);
 
-      // TODO(saiful): we can delete the image file from directory after
-      // sending it to the server
       Get.back(
         result: imageFile,
       );
@@ -59,5 +56,26 @@ class CameraController extends BaseController {
     );
     await camController.value?.initialize();
     camController.refresh();
+  }
+
+  Future<void> startVideoRecording() async {
+    if (camController.value?.value.isInitialized ?? false && !isRecording) {
+      final directory = await getApplicationDocumentsDirectory();
+      final videoPath = '${directory.path}/${DateTime.now()}.mp4';
+      await camController.value?.startVideoRecording();
+      isRecording = true;
+      camController.refresh();
+    }
+  }
+
+  Future<void> stopVideoRecording() async {
+    if (isRecording) {
+      final video = await camController.value?.stopVideoRecording();
+      isRecording = false;
+      camController.refresh();
+      Get.back(
+        result: File(video!.path),
+      );
+    }
   }
 }
