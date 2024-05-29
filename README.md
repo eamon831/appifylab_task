@@ -3,6 +3,11 @@
 ## Overview
 
 This Flutter project is part of the hiring process for Appifylab. The goal of the project is to recreate of WhatsApp with some extra features.
+Anyone can message anyone if user is registered on the system
+You can register and login to the system
+You can see the list of chats
+You can chat with the user
+
 
 # How to run the project
 simply clone the project and run "flutter pub get" in the terminal on the root project directory
@@ -184,5 +189,38 @@ The project follows a modular structure, and key components are organized as fol
 ├── main_dev.dart
 └── main_prod.dart
 ```
+
+## State Management
+
+This project uses **GetX** for state management. The relevant files are located in the `lib/app/core/base` directory:
+
+- `base_controller.dart`: Controller for managing the state of the pages
+- `base_remote_source.dart`: Remote source for fetching data from the API
+- `base_view.dart`: Base view for the pages
+- `base_widget_mixin.dart`: Mixin for common widgets
+- `mixins`: Contains different mixins for the project
+- `paging_controller.dart`: Controller for managing the state of the paging view
+- `model`: Contains the page state and page status models
+- `modules`: Contains the different modules of the project
+- `utils`: Contains utility modules and helper functions used across the app
+- `values`: Contains the app colors, values, and text styles
+- `widget`: Contains commonly used widgets across the app
+- `data`: Contains the local and remote data sources
+- `global_modals`: Contains the global modals used in the app
+- `model`: Contains the models used in the app
+## Libraries Used
+
+- **[get](https://pub.dev/packages/get)**: State management library for Flutter with a focus on simplicity and performance.
+- **[nb_utils](https://pub.dev/packages/nb_utils)**: A package for common utility methods and widgets.
+
+## Screenshots Android
+![Login Screen](login_screen.jpeg)
+![Register Screen](register_screen.jpeg)
+![Chat List Screen](chat_list.jpeg)
+![Chat with User Screen](chat_with_user_screen.jpeg)
+![Settings Screen](setting_screen.png)
+
+
+
 
 
