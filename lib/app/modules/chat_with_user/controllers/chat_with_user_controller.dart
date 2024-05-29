@@ -91,8 +91,9 @@ class ChatWithUserController extends BaseController {
           }
 
           final storageRef = FirebaseStorage.instance.ref();
-          final fileRef =
-              storageRef.child('chat_files/${msgRef.id}$fileExtension');
+          final fileRef = storageRef.child(
+            'chat_files/${msgRef.id}$fileExtension',
+          );
 
           // Upload the file to Firebase Storage
           await fileRef.putFile(selectedFile.value);
@@ -147,5 +148,4 @@ class ChatWithUserController extends BaseController {
       },
     );
   }
-
 }

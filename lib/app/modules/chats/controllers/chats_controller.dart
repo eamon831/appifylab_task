@@ -10,6 +10,7 @@ import '/app/global_modals/add_chat_modal/add_chat_modal_controller.dart';
 import '/app/global_modals/add_chat_modal/add_chat_modal_view.dart';
 
 class ChatsController extends BaseController {
+  ReceiverUser? myUserObj;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -89,5 +90,10 @@ class ChatsController extends BaseController {
     );
   }
 
-  Future? goToSettings() => Get.toNamed(Routes.SETTINGS);
+  Future? goToSettings() => Get.toNamed(
+        Routes.SETTINGS,
+        arguments: {
+          'user': myUserObj,
+        },
+      );
 }

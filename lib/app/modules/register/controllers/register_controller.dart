@@ -87,7 +87,7 @@ class RegisterController extends BaseController {
     String name,
     String phone,
   ) async {
-    final users = FirebaseFirestore.instance.collection('tbl_users');
+    final users = FirebaseFirestore.instance.collection(tblUsers);
     final storageRef = FirebaseStorage.instance.ref();
     final profilePicRef = storageRef.child('profile_pics/${user.uid}');
     await profilePicRef.putFile(profilePic.value).whenComplete(() => null);

@@ -93,6 +93,7 @@ class ChatsView extends BaseView<ChatsController> {
                     ),
                   );
                 } else {
+                  controller.myUserObj = receiver;
                   return const SizedBox();
                 }
               },

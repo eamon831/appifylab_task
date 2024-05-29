@@ -3,7 +3,7 @@ class ReceiverUser {
   final String? name;
   final String? email;
   final String? phone;
-  final String? photoUrl;
+  String? photoUrl;
 
   ReceiverUser({
     this.uid,
