@@ -1,7 +1,7 @@
-import 'package:appifylab_task/app/modules/camera/views/camera_view.dart';
 import 'package:get/get.dart';
 
 import '/app/modules/camera/bindings/camera_binding.dart';
+import '/app/modules/camera/views/camera_view.dart';
 import '/app/modules/chat_with_user/bindings/chat_with_user_binding.dart';
 import '/app/modules/chat_with_user/view/chat_with_user_view.dart';
 import '/app/modules/chats/bindings/chats_binding.dart';
@@ -12,14 +12,21 @@ import '/app/modules/main/bindings/main_binding.dart';
 import '/app/modules/main/views/main_view.dart';
 import '/app/modules/register/bindings/register_binding.dart';
 import '/app/modules/register/views/register_view.dart';
+import '/app/modules/splash/bindings/splash_binding.dart';
+import '/app/modules/splash/views/splash_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
+    ),
     GetPage(
       name: _Paths.MAIN,
       page: () => MainView(),

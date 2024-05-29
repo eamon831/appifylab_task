@@ -124,8 +124,8 @@ class MessageBubble extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           width: 140,
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-          margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           child: Column(
             children: [
               if(message.type == 'image')
