@@ -11,7 +11,34 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return AppBar();
+    return AppBar(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(controller.receiverUser.name ?? ''),
+          Text(
+            controller.receiverUser.phone ?? '',
+            style: const TextStyle(
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.call),
+          onPressed: controller.makeCall,
+        ),
+        IconButton(
+          icon: const Icon(Icons.videocam),
+          onPressed: controller.makeVideoCall,
+        ),
+        IconButton(
+          icon: const Icon(Icons.info),
+          onPressed: controller.showChatInfo,
+        )
+      ],
+    );
   }
 
   @override
@@ -50,24 +77,26 @@ class ChatWithUserView extends BaseView<ChatWithUserController> {
             final fileType = controller.selectedFile.value.path.split('.').last;
             print(fileType);
             return controller.selectedFile.value.path.isNotEmpty
-                ? fileType == ''? Image.file(
-                    controller.selectedFile.value,
-                    height: 100,
-                    width: 100,
-                  ): Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.grey,
-                    child: Center(
-                      child: Text(
-                        fileType,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                ? fileType == ''
+                    ? Image.file(
+                        controller.selectedFile.value,
+                        height: 100,
+                        width: 100,
+                      )
+                    : Container(
+                        height: 100,
+                        width: 100,
+                        color: Colors.grey,
+                        child: Center(
+                          child: Text(
+                            fileType,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
+                      )
                 : Container();
           },
         ),
@@ -128,9 +157,8 @@ class MessageBubble extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           child: Column(
             children: [
-              if(message.type == 'image')
-                Image.network(message.imageUrl??''),
-
+              if (message.type == 'image')
+                Image.network(message.imageUrl ?? ''),
               Text(
                 message.text,
                 style: TextStyle(

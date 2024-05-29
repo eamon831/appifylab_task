@@ -2,12 +2,14 @@ class ReceiverUser {
   final String? uid;
   final String? name;
   final String? email;
+  final String? phone;
   final String? photoUrl;
 
   ReceiverUser({
     this.uid,
     this.name,
     this.email,
+    this.phone,
     this.photoUrl,
   });
 
@@ -16,6 +18,7 @@ class ReceiverUser {
       uid: map['uid'],
       name: map['name'],
       email: map['email'],
+      phone: map['phone'],
       photoUrl: map['photo_url'],
     );
   }
@@ -25,6 +28,7 @@ class ReceiverUser {
       'uid': uid,
       'name': name,
       'email': email,
+      'phone': phone,
       'photoUrl': photoUrl,
     };
   }

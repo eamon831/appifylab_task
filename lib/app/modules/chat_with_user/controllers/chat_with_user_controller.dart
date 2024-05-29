@@ -35,6 +35,18 @@ class ChatWithUserController extends BaseController {
     }
   }
 
+  Future<void> makeCall() async {
+    toast('Call feature is not implemented yet');
+  }
+
+  Future<void> makeVideoCall() async {
+    toast('Video call feature is not implemented yet');
+  }
+
+  Future<void> showChatInfo() async {
+    toast('Chat info feature is not implemented yet');
+  }
+
   Future<void> sendMessage() async {
     if (msgController.text.isEmpty || selectedFile.value.path.isEmptyOrNull) {
       return;
@@ -123,17 +135,16 @@ class ChatWithUserController extends BaseController {
     }
   }
 
-  //open camera to take a picture and video
   Future<void> openCamera() async {
     Get.toNamed(
       Routes.CAMERA,
     )?.then(
       (value) {
-        print('i am getting image');
         if (value != null) {
           selectedFile.value = value as File;
         }
       },
     );
   }
+
 }
